@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxJet • Private Jet Charter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --dark: #0f172a;
+      --darker: #020617;
+      --gold: #d4af37;
+      --gold-dark: #b8972e;
+      --gray: #64748b;
+      --light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header / Hero */
+    header {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-content h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.2rem;
+      color: white;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+      color: #e2e8f0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--darker);
+      font-weight: 700;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+    }
+
+    .btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(212,175,55,0.4);
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: all 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(15,23,42,0.92);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Sections */
+    section {
+      padding: 8rem 5%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--gray);
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Fleet grid */
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .jet-card {
+      background: rgba(30,41,59,0.6);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(212,175,55,0.15);
+    }
+
+    .jet-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .jet-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .jet-info {
+      padding: 1.8rem;
+    }
+
+    .jet-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+
+    /* Form */
+    .booking-form {
+      background: rgba(30,41,59,0.7);
+      padding: 3.5rem;
+      border-radius: 20px;
+      max-width: 780px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 1rem 1.3rem;
+      border: 1px solid #475569;
+      border-radius: 10px;
+      background: #1e293b;
+      color: white;
+      font-size: 1.05rem;
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      border-top: 1px solid #334155;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 3.2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      nav { padding: 1.2rem 5%; }
+      .nav-links a { margin-left: 1.2rem; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="#" class="logo">LuxJet</a>
+    <div class="nav-links">
+      <a href="#fleet">Fleet</a>
+      <a href="#book">Book Now</a>
+      <a href="#">Destinations</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="hero-content">
+      <h1>Private Jet Charter</h1>
+      <p>Experience unparalleled luxury, privacy & flexibility. Your journey begins here.</p>
+      <a href="#book" class="btn">Request Quote →</a>
+    </div>
+  </header>
+
+  <section id="fleet">
+    <h2>Our Premium Fleet</h2>
+    <p class="subtitle">From light jets for short trips to ultra-long-range global aircraft — travel on your terms.</p>
+
+    <div class="fleet-grid">
+      <div class="jet-card">
+        <img src="https://images.unsplash.com/photo-1540979388789-7cee28a1cdc9?q=80&w=800&auto=format&fit=crop" alt="Light Jet">
+        <div class="jet-info">
+          <h3>Light Jet — Cessna Citation CJ4</h3>
+          <p>Up to 4 passengers • 2,000 nm range • Ideal for short to medium flights</p>
+          <div class="price">from $4,800 / hour</div>
+        </div>
+      </div>
+
+      <div class="jet-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Midsize Jet">
+        <div class="jet-info">
+          <h3>Midsize — Gulfstream G280</h3>
+          <p>Up to 8 passengers • 3,600 nm range • Transcontinental comfort</p>
+          <div class="price">from $7,900 / hour</div>
+        </div>
+      </div>
+
+      <div class="jet-card">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop" alt="Heavy Jet">
+        <div class="jet-info">
+          <h3>Heavy — Gulfstream G650ER</h3>
+          <p>Up to 19 passengers • 7,500 nm range • Non-stop global reach</p>
+          <div class="price">from $13,500 / hour</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="background: linear-gradient(to bottom, #0f172a, #020617);">
+    <h2>Request Your Flight</h2>
+    <p class="subtitle">Fill in the details — we’ll get back to you with the best options within hours.</p>
+
+    <form class="booking-form" id="bookingForm">
+      <div class="form-grid">
+        <input type="text"    placeholder="Full Name" required>
+        <input type="email"   placeholder="Email Address" required>
+        <input type="tel"     placeholder="Phone Number" required>
+        
+        <select required>
+          <option value="" disabled selected>Jet Category</option>
+          <option>Light Jet</option>
+          <option>Midsize Jet</option>
+          <option>Super Midsize</option>
+          <option>Heavy / Long Range</option>
+        </select>
+
+        <input type="text" placeholder="Departure City / Airport" required>
+        <input type="text" placeholder="Arrival City / Airport" required>
+
+        <input type="date" placeholder="Departure Date" required class="full-width">
+
+        <input type="number" placeholder="Number of Passengers" min="1" required class="full-width">
+        
+        <textarea placeholder="Any special requests? (pets, catering, timing preferences...)" rows="4" class="full-width"></textarea>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <button type="submit" class="btn" style="font-size:1.2rem; padding:1.2rem 3rem;">
+          Get My Quote →
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 LuxJet Private Charters. All rights reserved.</p>
+    <p style="margin-top:1rem; color:#64748b;">This is a demo website — prices are illustrative only.</p>
+  </footer>
+
+  <script>
+    // Simple navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Fake form submission feedback
+    document.getElementById('bookingForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("Thank you! Your quote request has been sent. We'll contact you shortly.");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
